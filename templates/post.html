@@ -3,7 +3,7 @@
 <footer>
     <dl class="article-metadata">
         {% block article_metadata %}
-        {% if page.taxonomies["category"] | defined %}
+        {% if page.taxonomies["category"] is defined %}
         <dt>Categories</dt>
         <dd>
             <ul class="footer-tag-list">
@@ -14,7 +14,7 @@
             </ul>
         </dd>
         {% endif %}
-        {% if page.taxonomies["tag"] | defined %}
+        {% if page.taxonomies["tag"] is defined %}
         <dt>Tags</dt>
         <dd>
             <ul class="footer-tag-list">
