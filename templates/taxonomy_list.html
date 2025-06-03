@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}{{ taxonomy.name }} - {{ super() }}{% endblock title %}
+{% block breadcrumb_header %}
+{% set home = get_section(path="_index.md") %}
+<li class="crumb"><a href="{{ home.permalink | safe}}">~</a></li>
+<li class="crumb">{{ taxonomy.name }}</li>
+{% endblock breadcrumb_header %}
+
+{% block content %}
+<header>
+    {%- block page_header -%}
+    <h1>{{ taxonomy.name }}</h1>
+    {%- endblock page_header -%}
+</header>
+<nav>
+    <ul>
+        {% for term in terms %}
+        <li><a href="{{ term.permalink }}">{{ term.name }}</a> <span class="taxonomy-term-page-count">{{ term.page_count }}</span></li>
+        {% endfor %}
+    </ul>
+</nav>
+{% endblock content %}

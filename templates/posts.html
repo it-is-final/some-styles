@@ -1,0 +1,9 @@
+{% extends "section.html" %}
+{% block content %}
+{{ super() }}
+<nav>
+    <ol class="posts-list">
+        {{ macros::list_section_pages(section=get_section(path="posts/_index.md"), number_pages=0) }}
+    </ol>
+</nav>
+{% endblock content %}

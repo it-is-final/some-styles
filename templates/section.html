@@ -1,0 +1,13 @@
+{% import "macros.html" as macros %}
+{% extends "base.html" %}
+
+{% block title %}{{ section.title }} - {{ super() }}{% endblock title %}
+
+{% block content %}
+<header>
+    {%- block page_header -%}
+    <h1>{{ section.title }}</h1>
+    {%- endblock page_header -%}
+</header>
+{{ section.content | safe }}
+{% endblock content %}

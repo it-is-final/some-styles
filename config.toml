@@ -1,0 +1,26 @@
+# The URL the site will be built for
+base_url = "https://it-is-final.github.io/some-styles/"
+title = "some-styles demo"
+description = "A demo of the some-styles theme"
+
+# Whether to automatically compile all Sass files in the sass directory
+compile_sass = true
+
+# Whether to build a search index to be used later on by a JavaScript library
+build_search_index = false
+
+author = "John Doe"
+
+taxonomies = [
+    {name = "category"},
+    {name = "tag"}
+]
+
+[markdown]
+# Whether to do syntax highlighting
+# Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
+highlight_code = false
+
+[extra]
+# Put all your custom variables here
+extra_styles = []

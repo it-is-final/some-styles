@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page.title }} - {{ super() }}{% endblock title %}
+
+{% block content %}
+<article>
+    <header>
+        {%- block page_header -%}
+        {% if page.date -%}
+        <time datetime="{{ page.date }}">{{ page.date | date() }}</time>
+        {%- endif %}
+        <h1>{{ page.title }}</h1>
+        {%- endblock page_header -%}
+    </header>
+    {{ page.content | safe }}
+    {%- block page_footer %}<footer></footer>{% endblock page_footer -%}
+</article>
+{% endblock content %}

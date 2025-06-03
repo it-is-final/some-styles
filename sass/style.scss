@@ -1,0 +1,141 @@
+html {
+    line-height: 1.35;
+    font-feature-settings: "kern";
+    text-rendering: optimizeLegibility;
+}
+
+body {
+    max-width: 35.5rem;
+    display: flex;
+    flex-flow: column nowrap;
+    font-family: serif;
+    margin: 2rem auto;
+}
+
+@media screen and (max-width: 37.39rem) {
+    body {
+        margin-inline: 0.95rem;
+    }
+}
+
+a:where(:not(:hover)) {
+    text-decoration: none;
+}
+
+.posts-list li {
+    list-style-type: disc;
+}
+
+li > .posts-list li {
+    list-style-type: circle;
+}
+
+.crumbs ol {
+    display: flex;
+    flex-flow: row nowrap;
+    list-style-type: none;
+    padding-left: 0;
+    gap: 0.25em;
+}
+
+.crumb:where(:not(:last-child))::after {
+    color: black;
+    content: "/";
+    padding-left: 0.25em;
+}
+
+.nav-header {
+    border-bottom: 1px solid black;
+}
+
+main > header,
+article > header {
+    margin-block: calc(0.67em * 2);
+    h1 {
+        margin-block: 0;
+    }
+}
+
+body > footer {
+    padding: 0.5em;
+    border-top: 1px solid black;
+}
+
+.post-footer-nav {
+    margin-bottom: 0.5em;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: stretch;
+    align-content: center;
+}
+
+.post-footer-nav-previous {
+    display: inline-flex;
+    text-align: left;
+    flex: 1;
+    padding-right: 0.55em;
+}
+
+.post-footer-nav-previous:where([href])::before {
+    display: block;
+    content: "←";
+    font-weight: bold;
+    padding-right: 0.55em;
+}
+
+.post-footer-nav-next {
+    display: inline-flex;
+    justify-content: flex-end;
+    text-align: right;
+    flex: 1;
+    padding-left: 0.55em;
+}
+
+.post-footer-nav-next:where([href])::after {
+    display: block;
+    content: "→";
+    font-weight: bold;
+    padding-left: 0.55em;
+}
+
+.post-footer-nav-contents {
+    padding: 0 1em;
+    border-inline: 1px solid black;
+}
+
+article>footer {
+    margin-block: 1em;
+}
+
+.article-metadata {
+    display: grid;
+    font-size: small;
+    grid-template-columns: max-content auto;
+    column-gap: 1em
+    dd {
+        margin: 0;
+    }
+}
+
+.footer-tag-list {
+    display: flex;
+    flex-flow: row wrap;
+    list-style-type: none;
+    padding: 0;
+    gap: 0.25em;
+    li {
+        padding: 0;
+    }
+    li:where(:not(:last-child))::after {
+        content: ",";
+    }
+}
+
+.taxonomy-term-page-count::before {
+    content: "(";
+}
+
+.taxonomy-term-page-count::after {
+    content: ")";
+}

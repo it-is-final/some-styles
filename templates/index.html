@@ -1,0 +1,39 @@
+{% import "macros.html" as macros %}
+{% extends "base.html" %}
+
+{% block content %}
+<header>
+    {% block page_header %}<h1>{{ config.title }}</h1>{% endblock page_header %}
+</header>
+{% block body %}
+<nav>
+    <menu>
+        {% block home_menu %}
+        <li><a href="about">about</a></li>
+        <li>
+            <a href="posts/">all posts</a> (by date)
+            <ul>
+                <li><a href="category/">by category</a></li>
+                <li><a href="tag/">by tag</a></li>
+            </ul>
+        </li>
+        <li>
+            recent posts
+            <ol class="posts-list">
+                {{ macros::list_section_pages(section=get_section(path="posts/_index.md"), number_pages=5) }}
+            </ol>
+        </li>
+        <li>
+            The contents of the home page is controlled by <code>index.html</code> located in the theme’s <i>templates</i> folder.
+            To learn how to override this (or its blocks), you can read the <a href="https://www.getzola.org/documentation/themes/extending-a-theme/" rel="external">relevant page</a> in Zola’s documentation.
+            Below is a list of the relevant blocks than can be overidden in this file.
+            <ul>
+                <li><code>body</code></li>
+                <li><code>home_menu</code></li>
+            </ul>
+        </li>
+        {% endblock home_menu %}
+    </menu>
+</nav>
+{% endblock body %}
+{% endblock content %}

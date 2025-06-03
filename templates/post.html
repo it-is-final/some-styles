@@ -1,0 +1,44 @@
+{% extends "page.html" %}
+{%- block page_footer %}
+<footer>
+    <dl class="article-metadata">
+        {% block article_metadata %}
+        {% if page.taxonomies["category"] | defined %}
+        <dt>Categories</dt>
+        <dd>
+            <ul class="footer-tag-list">
+                {% for category in page.taxonomies["category"] %}
+                {% set term = get_taxonomy_term(kind="category", term=category) %}
+                <li><a href="{{term.permalink | safe}}" rel="tag">{{ term.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </dd>
+        {% endif %}
+        {% if page.taxonomies["tag"] | defined %}
+        <dt>Tags</dt>
+        <dd>
+            <ul class="footer-tag-list">
+                {% for tag in page.taxonomies["tag"] %}
+                {% set term = get_taxonomy_term(kind="tag", term=tag) %}
+                <li><a href="{{term.permalink | safe}}" rel="tag">{{ term.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </dd>
+        {% endif %}
+        {% endblock article_metadata %}
+    </dl>
+</footer>
+{% endblock page_footer -%}
+{% block footer %}
+<nav class="post-footer-nav">
+    <a class="post-footer-nav-previous"
+     {% if page.higher %}href="{{ page.higher.permalink | safe }}"{% endif %} rel="prev"
+    >{% if page.higher %}{{ page.higher.title }}{% endif %}</a>
+    {% set parent = get_section(path=page.ancestors | last) -%}
+    <a class="post-footer-nav-contents" href="{{ parent.permalink | safe }}">posts</a>
+    <a class="post-footer-nav-next"
+    {% if page.lower %}href="{{ page.lower.permalink | safe }}"{% endif %} rel="next"
+    >{% if page.lower %}{{ page.lower.title }}{% endif %}</a>
+</nav>
+{{ super() }}
+{% endblock footer %}
