@@ -5,14 +5,15 @@
 {% block content %}
 <article>
     <header>
-        {%- block page_header -%}
-        {% if page.date -%}
-        <time datetime="{{ page.date }}">{{ page.date | date() }}</time>
-        {%- endif %}
+        {%- block page_header %}
         <h1>{{ page.title }}</h1>
-        {%- endblock page_header -%}
+        {%- if page.date %}
+        <p class="page-header__datetime"><time datetime="{{ page.date }}" itemprop="datePublished">{{ page.date | date() }}</time></p>
+        {%- endif %}
+        {%- endblock page_header %}
     </header>
     {{ page.content | safe }}
-    {%- block page_footer %}<footer></footer>{% endblock page_footer -%}
+    {%- block page_footer %}
+    {%- endblock page_footer %}
 </article>
 {% endblock content %}

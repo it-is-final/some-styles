@@ -1,26 +1,74 @@
-html {
+@import url("normalize.css");
+
+/* ELEMENTS */
+
+body {
     line-height: 1.35;
     font-feature-settings: "kern";
     text-rendering: optimizeLegibility;
-}
-
-body {
     max-width: 35.5rem;
     display: flex;
-    flex-flow: column nowrap;
-    font-family: serif;
-    margin: 2rem auto;
+    flex-direction: column;
+    align-content: center;
+    margin-block: 2rem;
+    margin-inline: auto;
 }
 
-@media screen and (max-width: 37.39rem) {
+@media screen and (max-width: 37.5rem) {
     body {
-        margin-inline: 0.95rem;
+        margin-inline: 1rem;
     }
 }
 
-a:where(:not(:hover)) {
+/* BLOCK */
+
+main > header,
+article > header {
+    display: flex;
+    flex-direction: column;
+}
+
+:is(main > header, article > header) h1 {
+    margin-block-end: 0;
+}
+
+:is(main > header, article > header) h1:not(:only-child) {
+    margin-block-start: 0;
+}
+
+body > footer {
+    padding: 0.5rem;
+    border-block-start: 1px solid black;
+}
+
+article > footer {
+    margin-block: 1rem;
+}
+
+pre {
+    overflow: auto;
+}
+
+/* INLINE */
+
+a:where(:any-link:not(:hover)) {
     text-decoration: none;
 }
+
+/* SKIP TO MAIN CONTENT ANCHOR */
+
+body > a[href="#main-content"]:first-child {
+    position: absolute;
+}
+
+body > a[href="#main-content"]:first-child:not(:focus-visible) {
+    width: 0;
+    height: 0;
+    opacity: 0;
+    z-index: -1;
+}
+
+/* CLASSES */
 
 .posts-list li {
     list-style-type: disc;
@@ -48,17 +96,9 @@ li > .posts-list li {
     border-bottom: 1px solid black;
 }
 
-main > header,
-article > header {
-    margin-block: calc(0.67em * 2);
-    h1 {
-        margin-block: 0;
-    }
-}
-
-body > footer {
-    padding: 0.5em;
-    border-top: 1px solid black;
+p.page-header__datetime {
+    order: -1;
+    margin-block-end: 0;
 }
 
 .post-footer-nav {
@@ -104,18 +144,15 @@ body > footer {
     border-inline: 1px solid black;
 }
 
-article>footer {
-    margin-block: 1em;
-}
-
-.article-metadata {
+dl.article-metadata {
     display: grid;
     font-size: small;
     grid-template-columns: max-content auto;
-    column-gap: 1em
-    dd {
-        margin: 0;
-    }
+    column-gap: 1em;
+}
+
+dl.article-metadata dd {
+    margin: 0;
 }
 
 .footer-tag-list {
@@ -124,12 +161,14 @@ article>footer {
     list-style-type: none;
     padding: 0;
     gap: 0.25em;
-    li {
-        padding: 0;
-    }
-    li:where(:not(:last-child))::after {
-        content: ",";
-    }
+}
+
+.footer-tag-list li {
+    padding: 0;
+}
+
+.footer-tag-list li:where(:not(:last-child))::after  {
+    content: ",";
 }
 
 .taxonomy-term-page-count::before {

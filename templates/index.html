@@ -1,13 +1,13 @@
 {% import "macros.html" as macros %}
 {% extends "base.html" %}
 
-{% block content %}
+{% block content -%}
 <header>
     {% block page_header %}<h1>{{ config.title }}</h1>{% endblock page_header %}
 </header>
 {% block body %}
 <nav>
-    <menu>
+    <ul>
         {% block home_menu %}
         <li><a href="about">about</a></li>
         <li>
@@ -24,7 +24,7 @@
             </ol>
         </li>
         <li>
-            The contents of the home page is controlled by <code>index.html</code> located in the theme’s <i>templates</i> folder.
+            The contents of the home page is controlled by <samp>index.html</samp> located in the theme’s <i>templates</i> folder.
             To learn how to override this (or its blocks), you can read the <a href="https://www.getzola.org/documentation/themes/extending-a-theme/" rel="external">relevant page</a> in Zola’s documentation.
             Below is a list of the relevant blocks than can be overidden in this file.
             <ul>
@@ -33,7 +33,7 @@
             </ul>
         </li>
         {% endblock home_menu %}
-    </menu>
+    </ul>
 </nav>
 {% endblock body %}
 {% endblock content %}
