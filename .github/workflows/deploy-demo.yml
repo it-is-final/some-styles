@@ -32,8 +32,6 @@ jobs:
         uses: getzola/github-pages@066755243e69f508fd1a74739fbf1a65f656c790
         with:
           zola_version: v0.23.6
-      - name: Build demo website
-        run: ./zola build
       - name: Upload static files as artifact
         id: deployment
         uses: actions/upload-pages-artifact@v3 # or specific "vX.X.X" version tag for this action
