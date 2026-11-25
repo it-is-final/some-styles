@@ -1,4 +1,4 @@
-{% import "macros.html" as macros %}
+
 {% extends "base.html" %}
 
 {% block content -%}
@@ -20,7 +20,7 @@
         <li>
             recent posts
             <ol class="posts-list">
-                {{ macros::list_section_pages(section=get_section(path="posts/_index.md"), number_pages=5) }}
+                {{ <li.section_pages section={get_section(path="posts/_index.md")} number_pages={5} /> }}
             </ol>
         </li>
         <li>

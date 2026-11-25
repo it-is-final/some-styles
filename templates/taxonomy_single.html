@@ -1,4 +1,4 @@
-{% import "macros.html" as macros %}
+
 {% extends "base.html" %}
 
 {% block title %}{{ term.name }} - {{ super() }}{% endblock title %}
@@ -18,7 +18,7 @@
 </header>
 <nav>
     <ol class="posts-list">
-        {{ macros::list_section_pages(section=term, number_pages=0) }}
+        {{ <li.section_pages section={term} number_pages={0} /> }}
     </ol>
 </nav>
 {% endblock content %}

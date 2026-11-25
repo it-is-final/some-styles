@@ -1,4 +1,4 @@
-{% macro list_section_pages(section, number_pages) %}
+{% component li.section_pages(section, number_pages) %}
 {%- for page in section.pages -%}
 {%- if loop.index > number_pages and number_pages > 0 %}{% break %}{% endif %}
 <li>
@@ -6,4 +6,4 @@
     <a href="{{ page.permalink | safe }}">{{ page.title }}</a>
 </li>
 {%- endfor %}
-{% endmacro list_section_pages %}
+{% endcomponent li.section_pages %}
